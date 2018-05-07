@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Space</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#fanMessage").click(function() {
+			$.get("/fanmessage", function(data){
+				alert("Message sent to fans");
+});
+		});
+	});
+</script>
+
+	<div>
+		<img src="{{ url_for('static', filename='spacelogo.png') }}" alt="Space">
+	</div>
+	<div>
+		<p>{{ space_crew_info.get('greeting_title') }}</p>
+		<p>{{ space_crew_info.get('greeting_message') | markdown }}</p>
+		<p>{{ space_crew_info.get('greeting_sender') }}</p>
+	</div>
+	<div>
+		<b>Get Exosphere Instructions</b>
+		<br />
+		<br />
+	</div>
+	<div>
+		<a href="/exosphere/habibi">Habibi</a>
+		<a href="/exosphere/laura">Laura</a>
+		<a href="/exosphere/carolyn">Carolyn</a>
+	</div>
+	<br />
+	<br />
+	<div>
+		<a href="/spacemap">Show Spacemap</a>
+	</div>
+	<br />
+	<br />
+	<div id="fanMessage">
+		<a>Send message to fans</a>
+	</div>
+</body>
+</html>
